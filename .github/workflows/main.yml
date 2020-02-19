@@ -1,0 +1,18 @@
+on: 
+  push:
+    paths:
+      - "Source/*"
+      - "Tests/*"
+      - ".github/workflows/*"
+
+jobs:
+  code_compiles:
+    name: "Code compilation"
+    runs-on: ubuntu-latest
+    steps:
+      - name: "Setup dotnet core"
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: 2.2.207
+      - name: "Compile code"
+        run: dotnet build
